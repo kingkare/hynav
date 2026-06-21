@@ -5,6 +5,7 @@ APP_DIR="${APP_DIR:-/opt/hynav}"
 APP_NAME="${APP_NAME:-hynav}"
 PORT="${PORT:-3002}"
 RESTART_MODE="${RESTART_MODE:-auto}"
+KEEP_BACKUPS="${KEEP_BACKUPS:-5}"
 
 cd "$APP_DIR"
 
@@ -14,8 +15,8 @@ if [ -d data ]; then
   mkdir -p backups
   BACKUP_FILE="backups/data-$(date +%Y%m%d-%H%M%S).tar.gz"
   tar -czf "$BACKUP_FILE" data
-  ls -1t backups/data-*.tar.gz | tail -n +6 | xargs -r rm -f
-  echo "==> 已备份 data 到 $BACKUP_FILE，仅保留最近 10 份备份"
+  ls -1t backups/data-*.tar.gz | tail -n +"$((KEEP_BACKUPS + 1))" | xargs -r rm -f
+  echo "==> 已备份 data 到 $BACKUP_FILE，仅保留最近 $KEEP_BACKUPS 份备份"
 fi
 
 echo "==> 拉取 GitHub 最新代码"

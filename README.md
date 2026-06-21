@@ -107,6 +107,22 @@ cd "G:/rhex/我的程序" && ./push.sh
 cd "G:/rhex/我的程序" && ./push.sh "update homepage"
 ```
 
+## 清理服务器缓存
+
+普通清理：
+
+```bash
+cd /opt/hynav && bash ./clear-cache.sh
+```
+
+彻底清理依赖后重新安装：
+
+```bash
+cd /opt/hynav && FULL_CLEAN=1 bash ./clear-cache.sh
+```
+
+脚本不会删除 `.env`、`data/` 和 `backups/`。
+
 ## 数据文件
 
 运行数据在：

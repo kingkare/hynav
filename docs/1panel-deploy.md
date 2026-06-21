@@ -225,7 +225,23 @@ tar -czf data.$(date +%F-%H%M%S).tar.gz data
 
 如果你使用 1Panel 计划任务，可以每天备份一次项目目录，或至少备份 `data/`。
 
-## 13. 常见问题
+## 13. 清理缓存
+
+普通清理 Next.js 构建缓存、npm 缓存和 PM2 日志：
+
+```bash
+cd /opt/hynav && bash ./clear-cache.sh
+```
+
+如果想连 `node_modules` 一起删除并重新安装：
+
+```bash
+cd /opt/hynav && FULL_CLEAN=1 bash ./clear-cache.sh
+```
+
+注意：脚本不会删除 `.env`、`data/` 和 `backups/`。
+
+## 14. 常见问题
 
 ### 页面打不开
 
