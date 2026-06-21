@@ -1,0 +1,204 @@
+[
+  {
+    "id": "cat_explore",
+    "key": "explore",
+    "nameZh": "探索",
+    "nameEn": "Explore",
+    "accent": "cyan",
+    "sort": 10,
+    "visible": true,
+    "links": [
+      {
+        "categoryId": "cat_explore",
+        "titleZh": "测试",
+        "titleEn": "测试",
+        "descZh": "https://www.nodeseek.com/search?q=nodeseek.org",
+        "descEn": "https://www.nodeseek.com/search?q=nodeseek.org",
+        "href": "https://www.nodeseek.com/search?q=nodeseek.org",
+        "icon": "globe",
+        "color": "cyan",
+        "sort": 0,
+        "visible": true,
+        "id": "adfa4af1-bab8-4a87-bdf8-c1140fc234aa"
+      },
+      {
+        "categoryId": "cat_explore",
+        "titleZh": "原版",
+        "titleEn": null,
+        "descZh": "原版",
+        "descEn": null,
+        "href": "https://nodeseek.org/",
+        "icon": "globe",
+        "color": "cyan",
+        "sort": 0,
+        "visible": true,
+        "id": "4b798969-d3b4-4456-a102-66fa4f474fa1"
+      },
+      {
+        "id": "link_community",
+        "categoryId": "cat_explore",
+        "titleZh": "社区主页",
+        "titleEn": "Community",
+        "descZh": "技术讨论、资源分享和项目动态",
+        "descEn": "Discussions, resources, and project updates",
+        "href": "https://example.com",
+        "icon": "users",
+        "color": "purple",
+        "sort": 10,
+        "visible": true
+      },
+      {
+        "id": "link_daily",
+        "categoryId": "cat_explore",
+        "titleZh": "每日精选",
+        "titleEn": "Daily Picks",
+        "descZh": "近期值得关注的帖子与工具",
+        "descEn": "Selected posts and tools",
+        "href": "https://example.com",
+        "icon": "sparkles",
+        "color": "lime",
+        "sort": 20,
+        "visible": true
+      },
+      {
+        "id": "link_index",
+        "categoryId": "cat_explore",
+        "titleZh": "资源索引",
+        "titleEn": "Resource Index",
+        "descZh": "服务器、网络和开发资源导航",
+        "descEn": "Server, network, and developer resources",
+        "href": "https://example.com",
+        "icon": "map",
+        "color": "cyan",
+        "sort": 30,
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "cat_services",
+    "key": "services",
+    "nameZh": "服务",
+    "nameEn": "Services",
+    "accent": "purple",
+    "sort": 20,
+    "visible": true,
+    "links": [
+      {
+        "id": "link_status",
+        "categoryId": "cat_services",
+        "titleZh": "状态监控",
+        "titleEn": "Status Monitor",
+        "descZh": "展示服务状态、节点延迟与可用性",
+        "descEn": "Service uptime and node latency",
+        "href": "https://example.com",
+        "icon": "activity",
+        "color": "green",
+        "sort": 10,
+        "visible": true
+      },
+      {
+        "id": "link_scripts",
+        "categoryId": "cat_services",
+        "titleZh": "脚本收藏",
+        "titleEn": "Script Kit",
+        "descZh": "常用服务器脚本与快捷命令",
+        "descEn": "Server scripts and quick commands",
+        "href": "https://example.com",
+        "icon": "terminal",
+        "color": "orange",
+        "sort": 20,
+        "visible": true
+      },
+      {
+        "id": "link_network",
+        "categoryId": "cat_services",
+        "titleZh": "网络体检",
+        "titleEn": "Network Check",
+        "descZh": "线路质量、回程和测速工具",
+        "descEn": "Route, latency, and speed tools",
+        "href": "https://example.com",
+        "icon": "network",
+        "color": "teal",
+        "sort": 30,
+        "visible": true
+      },
+      {
+        "id": "link_repo",
+        "categoryId": "cat_services",
+        "titleZh": "项目仓库",
+        "titleEn": "Repository",
+        "descZh": "社区项目、文档与开源协作",
+        "descEn": "Projects, docs, and open-source work",
+        "href": "https://github.com",
+        "icon": "github",
+        "color": "blue",
+        "sort": 40,
+        "visible": true
+      }
+    ]
+  },
+  {
+    "id": "cat_projects",
+    "key": "projects",
+    "nameZh": "项目",
+    "nameEn": "Projects",
+    "accent": "lime",
+    "sort": 30,
+    "visible": true,
+    "links": [
+      {
+        "categoryId": "cat_projects",
+        "titleZh": "密码库",
+        "titleEn": null,
+        "descZh": "密码库",
+        "descEn": null,
+        "href": "https://bitwarden.houyi.bond/",
+        "icon": "code",
+        "color": "cyan",
+        "sort": 0,
+        "visible": true,
+        "id": "0583da0e-a771-4929-b497-013c59014382"
+      },
+      {
+        "categoryId": "cat_projects",
+        "titleZh": "探针",
+        "titleEn": null,
+        "descZh": "自用探针",
+        "descEn": null,
+        "href": "http://156.239.251.66:25774/",
+        "icon": "globe",
+        "color": "cyan",
+        "sort": 0,
+        "visible": true,
+        "id": "c68df342-8a41-495d-a50f-8828a492594b"
+      },
+      {
+        "id": "link_board",
+        "categoryId": "cat_projects",
+        "titleZh": "项目看板",
+        "titleEn": "Project Board",
+        "descZh": "集中展示社区成员的作品",
+        "descEn": "Community project showcase",
+        "href": "https://example.com",
+        "icon": "boxes",
+        "color": "indigo",
+        "sort": 10,
+        "visible": true
+      },
+      {
+        "id": "link_submit",
+        "categoryId": "cat_projects",
+        "titleZh": "提交入口",
+        "titleEn": "Submit",
+        "descZh": "提交你的站点、工具或服务",
+        "descEn": "Submit a website, tool, or service",
+        "href": "https://example.com",
+        "icon": "plus",
+        "color": "yellow",
+        "sort": 20,
+        "visible": true
+      }
+    ]
+  }
+]

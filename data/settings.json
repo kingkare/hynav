@@ -1,0 +1,16 @@
+{
+  "siteName": "后羿自用导航",
+  "welcomeText": "欢迎来到",
+  "subtitle": "一个聚合优质资源、服务入口和开发者项目的社区导航中心。",
+  "primaryButtonText": "开始探索",
+  "repoButtonText": "项目仓库",
+  "repoUrl": "https://github.com",
+  "communityCardTitle": "社区主站",
+  "communityCardDesc": "把论坛、文档、项目和服务统一收纳，让成员快速找到入口。",
+  "communityCardHref": "#community",
+  "communityCardAction": "开始探索",
+  "adminCardTitle": "后台管理",
+  "adminCardDesc": "登录后台后添加分类、网址、图标和排序。",
+  "adminCardHref": "/admin",
+  "adminCardAction": "后台管理"
+}

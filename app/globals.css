@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --fade-color: rgba(111, 225, 255, 0.05);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: #dfe8f2;
+  background: #0f2536;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  color: #0b1c2b;
+  background: #6fe1ff;
+}
+
+@layer components {
+  .grid-bg {
+    background-image:
+      linear-gradient(var(--fade-color) 1px, transparent 1px),
+      linear-gradient(to right, var(--fade-color) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: linear-gradient(transparent, black 10%, black 90%, transparent);
+  }
+
+  .glass-card {
+    border: 1px solid rgba(111, 225, 255, 0.12);
+    background: rgba(15, 37, 54, 0.72);
+    backdrop-filter: blur(12px);
+    transition:
+      transform 180ms ease,
+      border-color 180ms ease,
+      box-shadow 180ms ease,
+      background 180ms ease;
+  }
+
+  .glass-card:hover {
+    border-color: rgba(111, 225, 255, 0.42);
+    background: rgba(15, 37, 54, 0.9);
+    box-shadow: 0 4px 24px rgba(111, 225, 255, 0.14);
+    transform: translateY(-2px);
+  }
+
+  .admin-input {
+    width: 100%;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(111, 225, 255, 0.18);
+    background: rgba(11, 28, 43, 0.9);
+    padding: 0.7rem 0.85rem;
+    color: #fff;
+    outline: none;
+  }
+
+  .admin-input:focus {
+    border-color: rgba(111, 225, 255, 0.72);
+    box-shadow: 0 0 0 3px rgba(111, 225, 255, 0.1);
+  }
+
+  .admin-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(111, 225, 255, 0.2);
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #d1d5db;
+    transition:
+      border-color 180ms ease,
+      color 180ms ease,
+      background 180ms ease;
+  }
+
+  .admin-action:hover {
+    border-color: rgba(111, 225, 255, 0.7);
+    color: #fff;
+    background: rgba(111, 225, 255, 0.06);
+  }
+
+  .admin-mini-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 0.375rem;
+    border: 1px solid rgba(111, 225, 255, 0.2);
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    color: #d1d5db;
+  }
+
+  .admin-mini-button:hover {
+    color: #6fe1ff;
+  }
+}
