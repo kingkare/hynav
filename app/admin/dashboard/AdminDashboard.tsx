@@ -84,6 +84,35 @@ const emptySettings: SiteSettings = {
   adminCardAction: "后台管理"
 };
 
+const showEnglishFields = false;
+
+const colorLabels: Record<string, string> = {
+  blue: "蓝色",
+  cyan: "青色",
+  green: "绿色",
+  indigo: "靛蓝",
+  lime: "荧光绿",
+  orange: "橙色",
+  purple: "紫色",
+  teal: "蓝绿色",
+  yellow: "黄色"
+};
+
+const iconLabels: Record<string, string> = {
+  activity: "活跃",
+  boxes: "盒子",
+  code: "代码",
+  github: "GitHub",
+  globe: "地球",
+  map: "地图",
+  network: "网络",
+  plus: "加号",
+  server: "服务器",
+  sparkles: "星光",
+  terminal: "终端",
+  users: "用户"
+};
+
 export function AdminDashboard() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [settingsForm, setSettingsForm] = useState<SiteSettings>(emptySettings);
@@ -128,6 +157,10 @@ export function AdminDashboard() {
     loadData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    document.title = `${settingsForm.siteName} 后台管理`;
+  }, [settingsForm.siteName]);
 
   function openNewCategory() {
     setCategoryForm(emptyCategory);
@@ -453,13 +486,15 @@ function CategoryForm({
       <Field label="中文名称">
         <input className="admin-input" onChange={(event) => setCategoryForm({ ...categoryForm, nameZh: event.target.value })} placeholder="服务" required value={categoryForm.nameZh} />
       </Field>
-      <Field hint="不是必填；留空时前台英文模式会使用中文名称。" label="英文名称（选填）">
-        <input className="admin-input" onChange={(event) => setCategoryForm({ ...categoryForm, nameEn: event.target.value })} placeholder="选填：Services" value={categoryForm.nameEn} />
-      </Field>
+      {showEnglishFields && (
+        <Field hint="不是必填；留空时前台英文模式会使用中文名称。" label="英文名称（选填）">
+          <input className="admin-input" onChange={(event) => setCategoryForm({ ...categoryForm, nameEn: event.target.value })} placeholder="选填：Services" value={categoryForm.nameEn} />
+        </Field>
+      )}
       <div className="grid grid-cols-2 gap-4">
         <Field label="强调色">
           <select className="admin-input" onChange={(event) => setCategoryForm({ ...categoryForm, accent: event.target.value })} value={categoryForm.accent}>
-            {colorOptions.map((color) => <option key={color} value={color}>{color}</option>)}
+            {colorOptions.map((color) => <option key={color} value={color}>{colorLabels[color] ?? color}</option>)}
           </select>
         </Field>
         <Field label="排序">
@@ -495,27 +530,31 @@ function LinkForm({
       <Field label="中文标题">
         <input className="admin-input" onChange={(event) => setLinkForm({ ...linkForm, titleZh: event.target.value })} placeholder="项目名称" required value={linkForm.titleZh} />
       </Field>
-      <Field hint="不是必填；留空时前台英文模式会使用中文标题。" label="英文标题（选填）">
-        <input className="admin-input" onChange={(event) => setLinkForm({ ...linkForm, titleEn: event.target.value })} placeholder="选填：Project name" value={linkForm.titleEn} />
-      </Field>
+      {showEnglishFields && (
+        <Field hint="不是必填；留空时前台英文模式会使用中文标题。" label="英文标题（选填）">
+          <input className="admin-input" onChange={(event) => setLinkForm({ ...linkForm, titleEn: event.target.value })} placeholder="选填：Project name" value={linkForm.titleEn} />
+        </Field>
+      )}
       <Field label="链接地址">
         <input className="admin-input" onChange={(event) => setLinkForm({ ...linkForm, href: event.target.value })} placeholder="https://example.com" required type="url" value={linkForm.href} />
       </Field>
       <Field label="中文描述">
         <textarea className="admin-input min-h-20" onChange={(event) => setLinkForm({ ...linkForm, descZh: event.target.value })} placeholder="一句话说明这个入口" value={linkForm.descZh} />
       </Field>
-      <Field hint="不是必填；留空时前台英文模式会使用中文描述。" label="英文描述（选填）">
-        <textarea className="admin-input min-h-20" onChange={(event) => setLinkForm({ ...linkForm, descEn: event.target.value })} placeholder="选填：Short description" value={linkForm.descEn} />
-      </Field>
+      {showEnglishFields && (
+        <Field hint="不是必填；留空时前台英文模式会使用中文描述。" label="英文描述（选填）">
+          <textarea className="admin-input min-h-20" onChange={(event) => setLinkForm({ ...linkForm, descEn: event.target.value })} placeholder="选填：Short description" value={linkForm.descEn} />
+        </Field>
+      )}
       <div className="grid grid-cols-3 gap-4">
         <Field label="图标">
           <select className="admin-input" onChange={(event) => setLinkForm({ ...linkForm, icon: event.target.value })} value={linkForm.icon}>
-            {iconOptions.map((icon) => <option key={icon} value={icon}>{icon}</option>)}
+            {iconOptions.map((icon) => <option key={icon} value={icon}>{iconLabels[icon] ?? icon}</option>)}
           </select>
         </Field>
         <Field label="颜色">
           <select className="admin-input" onChange={(event) => setLinkForm({ ...linkForm, color: event.target.value })} value={linkForm.color}>
-            {colorOptions.map((color) => <option key={color} value={color}>{color}</option>)}
+            {colorOptions.map((color) => <option key={color} value={color}>{colorLabels[color] ?? color}</option>)}
           </select>
         </Field>
         <Field label="排序">
