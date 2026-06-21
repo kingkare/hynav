@@ -2,14 +2,14 @@ node_modules/
 .next/
 out/
 
+.git/
+.github/
+
 .env
 .env.*
-!.env.example
 
 data/*.json
 !data/*.example.json
-data/*.bak
-data/*.backup
 
 *.log
 *.tmp
@@ -19,4 +19,5 @@ data/*.backup
 .vscode/
 .idea/
 
+docs/
 更新命令.txt

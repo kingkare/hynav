@@ -1,0 +1,26 @@
+[
+  {
+    "id": "example-category",
+    "key": "example",
+    "nameZh": "示例分类",
+    "nameEn": "Example",
+    "accent": "cyan",
+    "sort": 1,
+    "visible": true,
+    "links": [
+      {
+        "id": "example-link",
+        "categoryId": "example-category",
+        "titleZh": "示例网址",
+        "titleEn": "Example Site",
+        "descZh": "这是一个示例网址，正式使用时请在后台添加真实数据。",
+        "descEn": "This is an example link.",
+        "href": "https://example.com",
+        "icon": "sparkles",
+        "color": "cyan",
+        "sort": 1,
+        "visible": true
+      }
+    ]
+  }
+]

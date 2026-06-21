@@ -108,41 +108,43 @@ npm run build
 
 构建成功后，项目即可生产运行。
 
-## 7. 在 1Panel 创建 Node.js 网站
+## 7. 启动 Node 服务
 
-进入 1Panel：
+如果你选择 1Panel 反向代理模式，不需要创建 1Panel Node.js 网站，也不需要选择 Node.js 运行环境。
 
-1. 打开「网站」
-2. 点击「创建网站」
-3. 选择「运行环境」
-4. 选择 Node.js
-5. 运行目录选择项目根目录，例如：
-
-```bash
-/opt/1panel/apps/community-nav
-```
-
-6. 启动命令填写：
+你只需要确保项目在服务器本机监听 `3001` 端口：
 
 ```bash
 npm run start
 ```
 
-7. 运行端口填写：
+临时测试可以直接运行上面的命令。正式使用建议用 1Panel 的「进程守护」、Supervisor、PM2、systemd 或 Docker 来长期守护这个进程。
+
+如果使用 PM2，可以参考：
 
 ```bash
-3001
+npm install -g pm2
+pm2 start npm --name hynav -- run start
+pm2 save
 ```
 
-8. 绑定域名，例如：
+确认端口：
 
 ```bash
-nav.example.com
+ss -lntp | grep ':3001'
 ```
 
-## 8. 配置反向代理
+能看到 `3001` 处于监听状态后，再配置 1Panel 反向代理。
 
-如果 1Panel 没有自动生成反向代理，可以手动代理到：
+## 8. 在 1Panel 创建反向代理网站
+
+进入 1Panel：
+
+1. 打开「网站」
+2. 点击「创建网站」
+3. 选择「反向代理」
+4. 绑定域名，例如 `nav.example.com`
+5. 代理地址填写：
 
 ```bash
 http://127.0.0.1:3001
@@ -188,16 +190,25 @@ https://你的域名/admin
 
 ## 11. 日常更新流程
 
-更新代码后执行：
+如果项目已经接入 GitHub，服务器可以使用项目根目录的 `update.sh` 更新：
 
 ```bash
-npm install
-npm run build
+cd /opt/hynav
+chmod +x update.sh
+./update.sh
 ```
 
-然后在 1Panel 中重启 Node.js 网站。
+脚本会自动备份 `data/`、拉取代码、安装依赖并构建项目。
 
-注意：如果你已经在后台添加了真实数据，更新代码时不要覆盖服务器上的 `data/navigation.json`。
+注意：1Panel 反向代理只负责转发流量，不负责启动 Node.js。脚本会尝试重启名为 `hynav` 的 PM2、systemd 或 Supervisor 进程；如果没有检测到进程守护工具，脚本会提示你手动重启。
+
+如果你使用 Docker Compose 部署，可以执行：
+
+```bash
+RESTART_MODE=docker ./update.sh
+```
+
+注意：如果你已经在后台添加了真实数据，更新代码时不要覆盖服务器上的 `data/navigation.json` 和 `data/settings.json`。
 
 ## 12. 备份
 
@@ -205,15 +216,16 @@ npm run build
 
 ```bash
 data/navigation.json
+data/settings.json
 ```
 
 建议定期备份：
 
 ```bash
-cp data/navigation.json data/navigation.$(date +%F-%H%M%S).json
+tar -czf data.$(date +%F-%H%M%S).tar.gz data
 ```
 
-如果你使用 1Panel 计划任务，可以每天备份一次项目目录，或至少备份 `data/navigation.json`。
+如果你使用 1Panel 计划任务，可以每天备份一次项目目录，或至少备份 `data/`。
 
 ## 13. 常见问题
 
@@ -221,8 +233,8 @@ cp data/navigation.json data/navigation.$(date +%F-%H%M%S).json
 
 检查：
 
-- 1Panel Node.js 网站是否运行
-- 端口是否填写 `3001`
+- Node 服务是否运行
+- `3001` 端口是否正在监听
 - 防火墙是否放行
 - 反向代理是否指向 `127.0.0.1:3001`
 

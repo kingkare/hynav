@@ -1,0 +1,16 @@
+services:
+  hynav:
+    build: .
+    image: hynav:latest
+    container_name: hynav
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+      PORT: "3001"
+      HOSTNAME: "0.0.0.0"
+    ports:
+      - "127.0.0.1:3001:3001"
+    volumes:
+      - ./data:/app/data
