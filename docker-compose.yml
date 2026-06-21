@@ -8,9 +8,9 @@ services:
       - .env
     environment:
       NODE_ENV: production
-      PORT: "3001"
+      PORT: "3002"
       HOSTNAME: "0.0.0.0"
     ports:
-      - "127.0.0.1:3001:3001"
+      - "127.0.0.1:3002:3002"
     volumes:
       - ./data:/app/data

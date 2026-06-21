@@ -13,7 +13,7 @@ FROM node:20-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
-ENV PORT=3001
+ENV PORT=3002
 ENV HOSTNAME=0.0.0.0
 
 COPY package.json package-lock.json ./
@@ -24,6 +24,6 @@ COPY --from=builder /app/next.config.mjs ./next.config.mjs
 
 RUN mkdir -p data
 
-EXPOSE 3001
+EXPOSE 3002
 
 CMD ["npm", "run", "start"]

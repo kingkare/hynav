@@ -23,7 +23,7 @@ npm run dev
 默认开发地址：
 
 ```text
-http://localhost:3001
+http://localhost:3002
 ```
 
 ## 环境变量
@@ -53,13 +53,13 @@ npm run start
 生产服务默认监听：
 
 ```text
-http://127.0.0.1:3001
+http://127.0.0.1:3002
 ```
 
 1Panel 里使用反向代理时，代理目标填写：
 
 ```text
-http://127.0.0.1:3001
+http://127.0.0.1:3002
 ```
 
 ## 服务器更新
@@ -73,9 +73,7 @@ http://127.0.0.1:3001
 首次部署后，后续更新可以执行：
 
 ```bash
-cd /opt/hynav
-chmod +x update.sh
-./update.sh
+cd /opt/hynav && ./update.sh
 ```
 
 `update.sh` 会执行：
@@ -84,9 +82,30 @@ chmod +x update.sh
 - 拉取 GitHub 最新代码
 - 安装依赖
 - 构建项目
-- 尝试重启 `hynav` 进程
+- 尝试重启 `hynav` PM2 进程
 
-如果你使用 1Panel 反向代理，反向代理本身不会启动 Node.js 程序。你还需要用 1Panel 的进程守护、Supervisor、PM2、systemd 或 Docker 来长期运行 `npm run start`。
+如果你使用 1Panel 反向代理，反向代理本身不会启动 Node.js 程序。推荐用 PM2 长期运行 `npm run start`：
+
+```bash
+npm install -g pm2
+cd /opt/hynav
+pm2 start npm --name hynav -- run start
+pm2 save
+```
+
+## 本地推送
+
+本地改完代码后，在 Git Bash 执行：
+
+```bash
+cd "G:/rhex/我的程序" && ./push.sh
+```
+
+也可以自定义提交信息：
+
+```bash
+cd "G:/rhex/我的程序" && ./push.sh "update homepage"
+```
 
 ## 数据文件
 
