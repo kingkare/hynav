@@ -14,7 +14,8 @@ if [ -d data ]; then
   mkdir -p backups
   BACKUP_FILE="backups/data-$(date +%Y%m%d-%H%M%S).tar.gz"
   tar -czf "$BACKUP_FILE" data
-  echo "==> 已备份 data 到 $BACKUP_FILE"
+  ls -1t backups/data-*.tar.gz | tail -n +6 | xargs -r rm -f
+  echo "==> 已备份 data 到 $BACKUP_FILE，仅保留最近 10 份备份"
 fi
 
 echo "==> 拉取 GitHub 最新代码"
